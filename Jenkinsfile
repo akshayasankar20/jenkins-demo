@@ -1,20 +1,14 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'MAVEN_HOME'
+    }
+
     stages {
         stage('Build') {
             steps {
-                echo "Building application"
-            }
-        }
-        stage('Test') {
-            steps {
-                echo "Running tests"
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo "Deploying application"
+                sh 'mvn clean package'
             }
         }
     }
